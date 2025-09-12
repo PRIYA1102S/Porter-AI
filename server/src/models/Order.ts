@@ -12,6 +12,8 @@ export interface IOrder extends Document {
   metadata?: any;
   createdAt?: Date;
   updatedAt?: Date;
+  amount?: number; // Add amount field for earnings
+  expenses?: number; // Add expenses field for expenses
 }
 
 const OrderSchema = new Schema<IOrder>(
@@ -25,6 +27,8 @@ const OrderSchema = new Schema<IOrder>(
     assignedTo: { type: String, default: null },
     trackingId: { type: String, required: true, unique: true },
     metadata: { type: Schema.Types.Mixed },
+    amount: { type: Number, default: 200 }, // Default earning per order
+    expenses: { type: Number, default: 50 }, // Default expense per order
   },
   { timestamps: true }
 );
